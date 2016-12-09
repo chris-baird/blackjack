@@ -1,0 +1,37 @@
+# <center>****Blackjack****</center>
+
+## 1. Define variables
+	    1. Deck.
+	    2. Players hand.
+	    3. Dealers hand.
+	    4. Players card score.
+	    5. Dealers card score.
+## 2. Register Event Listeners 
+		1. Hit.
+		2. Stand.
+		3. (Play/Play Again).
+## 3. Initialize Game
+		1. Set variables for hands and score to 0.
+		2. Shuffle Deck.
+## 4. Render game
+		1. Send Data to display
+		
+## 5. Player chooses Play Game
+		 
+		1. Player gets 2 cards, House gets 2 cards
+			1.a) (For dealer 1 card is face up and 1 card face down).
+		2. Update variables.
+			2.a) Players hand/score, Dealers Hand/score).
+		3. Check for winner (Does Dealer or Player have 21?).
+		4. Render all data to board positions.
+## 6.  Player chooses to  stand
+		1. Checks Player hand value against dealer hand value and diaplays a win/lose message.
+## 7. Player chooses to hit
+		1. Player gets 1 card if HIT is chosen.
+			1.a) Dealer draws each round until soft 17	 
+			
+		2. Update variables (If player hits).
+		3. Check for Win or Bust(Player/House).
+		4. Render Game.
+		5. Repeat(Hit/Stand till bust or win/lose).
+		6. Display wins or lose Message.
