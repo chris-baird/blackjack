@@ -1,0 +1,81 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(../assets/felt.jpg);
+}
+
+h3 {
+  text-align: center;
+}
+
+h2 {
+  text-align: left;
+}
+h1 {
+  margin-top: 0;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 50px;
+}
+
+button {
+  height: 40px;
+  width: 100px;
+}
+
+
+
+.card {
+  height: 200px;
+  width: 140px;
+  margin: 5px 25px;
+  display: inline-block;
+  border: 2px solid;
+}
+
+#dealer-name {
+  margin-left: 95px;
+}
+
+#player-name {
+  margin-left: 120px;
+}
+
+#main-wrapper {
+
+}
+
+#player-btn-div {
+  text-align: center;
+}
+
+
+#dealer-display {
+  text-align: center;
+}
+
+#player-display {
+  text-align: center;
+}
+
+#middle-display {
+  height: 25px;
+  text-align: center;
+}
+
+#bottom-display {
+
+}
+
+#play-game {
+  text-align: center;
+  display: inline-block;
+}
+
+#hand {
+  text-align: center;
+}
+
+
+
