@@ -12,6 +12,7 @@ h3 {
 h2 {
   text-align: left;
 }
+
 h1 {
   margin-top: 0;
   padding-top: 20px;
@@ -24,14 +25,17 @@ button {
   width: 100px;
 }
 
-
-
 .card {
   height: 200px;
   width: 140px;
   margin: 5px 25px;
   display: inline-block;
   border: 2px solid;
+}
+
+#pcard1 {
+  background-image: url(../assets/cards/2_of_clubs.png);
+  background-size: 140px 200px;
 }
 
 #dealer-name {
@@ -42,14 +46,9 @@ button {
   margin-left: 120px;
 }
 
-#main-wrapper {
-
-}
-
 #player-btn-div {
   text-align: center;
 }
-
 
 #dealer-display {
   text-align: center;
@@ -62,10 +61,6 @@ button {
 #middle-display {
   height: 25px;
   text-align: center;
-}
-
-#bottom-display {
-
 }
 
 #play-game {
