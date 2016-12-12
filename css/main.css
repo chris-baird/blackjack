@@ -25,25 +25,17 @@ button {
   width: 100px;
 }
 
-.card {
-  height: 200px;
-  width: 140px;
-  margin: 5px 25px;
-  display: inline-block;
-  border: 2px solid;
-}
-
 #pcard1 {
-  background-image: url(../assets/cards/2_of_clubs.png);
-  background-size: 140px 200px;
 }
 
 #dealer-name {
-  margin-left: 95px;
+  margin-left: 220px;
+  margin-bottom: 2px;
 }
 
 #player-name {
-  margin-left: 120px;
+  margin-left: 253px;
+  margin-bottom: 2px;
 }
 
 #player-btn-div {
@@ -59,7 +51,7 @@ button {
 }
 
 #middle-display {
-  height: 25px;
+  height: 5px;
   text-align: center;
 }
 
@@ -70,6 +62,7 @@ button {
 
 #hand {
   text-align: center;
+  height: 200px;
 }
 
 
