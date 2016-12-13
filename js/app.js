@@ -57,23 +57,32 @@ function getCardValue(card) {
 }
 
 function playerHit() {
-  hit(playerHand);
+  playerScore = hit(playerHand);
+  if (playerScore > 21) handleBust('p');
+  render();
 }
 
-function hit(who) {
+function dealerHit() {
+  dealerScore = hit(dealerHand);
+  if (dealerScore > 21) handleBust('d');
+  render();
+}
+
+function handleBust(who) {
+
+}
+
+// returns updated score for hand
+function hit(hand) {
   if (deck.length > 0) {
-    var hand = (who === playerHand) ? playerHand : dealerHand;
     var card = deck.shift();
     hand.push(card);
-    console.log(hand);
+    return scoreTotal(hand);
   }
 }
 
-function scoreTotal(who) {
-  playerScore = 0;
-  dealerScore = 0;
-  var hand = (who === playerHand) ? playerHand : dealerHand;
-  var score = (who === playerHand) ? playerScore : dealerScore;
+function scoreTotal(hand) {
+  var score = 0;
   var aceCount = 0;
   hand.forEach(function(card) {
     aceCount += (card.val === 'Ace') ? 1 : 0;
@@ -88,22 +97,9 @@ function scoreTotal(who) {
   return score;
 }
 
-// function playerScoreTotal() {
-//   playerScore = 0;
-//   var aceCount = 0;
-//   playerHand.forEach(function(card) {
-//     aceCount += (card.val === 'Ace') ? 1 : 0;
-//   });
-//   for (var i = 0; i < playerHand.length; i++) {
-//     playerScore += getCardValue(playerHand[i]);
-//   }
-//   while (playerScore > 21 && aceCount) {
-//     playerScore -= 10;
-//     aceCount--;
-//   }
-//   return playerScore;
-// }
+function render() {
 
+}
 
 function isAbove() {
   if(dealerScore < 17){
