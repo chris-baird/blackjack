@@ -18,6 +18,7 @@ var Card = function(suit, val) {
 
 $('#hit').on('click', playerHit);
 $('#play-game').on('click', init);
+$('#stay').on('click', stand);
 
 function init(){
   playerHand = [];
@@ -31,6 +32,7 @@ function init(){
       deck.push(card);
     }
   }
+  $('#player-info').text('')
   shuffle(deck);
   deal();
   checkBlackjack();
@@ -39,9 +41,9 @@ function init(){
 
 function checkBlackjack() {
   if (playerScore === 21) {
-    console.log('Player Blackjack!');
+    $('#player-info').text('Blackjack! Player Wins.');
   } else if (dealerScore === 21) {
-    console.log('Dealer Balckjack!');
+    $('#player-info').text('Blackjack! Dealer Wins.');
   }
 }
 
@@ -69,18 +71,24 @@ function getCardValue(card) {
 
 function playerHit() {
   playerScore = hit(playerHand);
-  if (playerScore > 21) handleBust('p');
+  if (playerScore > 21) handleBustPlayer();
+  checkBlackjack();
   render();
 }
 
 function dealerHit() {
   dealerScore = hit(dealerHand);
-  if (dealerScore > 21) handleBust('d');
+  if (dealerScore > 21) handleBustDealer();
+  checkBlackjack();
   render();
 }
 
-function handleBust(who) {
+function handleBustPlayer() {
+  $('#player-info').text('Player has busted, Game over.');
+}
 
+function handleBustDealer() {
+  $('#player-info').text('Dealer has busted, You Win.');
 }
 
 // returns updated score for hand
@@ -108,14 +116,29 @@ function scoreTotal(hand) {
   return score;
 }
 
-function render() {
-  console.log('The board has been updated')
+function isAbove() {
+  while (dealerScore < 17) {
+    dealerHit();
+  }
 }
 
-function isAbove() {
-  if(dealerScore < 17){
-    dealDealer();
-  } else return;
+function checkWinner() {
+  if (playerScore > dealerScore) {
+    $('#player-info').text('Player Wins with ' + playerScore);
+  } else $('#player-info').text('Dealer Wins with ' + dealerScore)
+}
+
+function stand() {
+  isAbove();
+  if (dealerScore > 21) {
+    handleBustDealer();
+  } else {
+    checkWinner();
+  }
+}
+
+function render() {
+
 }
 
 function shuffle(array) {
