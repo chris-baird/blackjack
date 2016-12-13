@@ -125,6 +125,8 @@ function isAbove() {
 function checkWinner() {
   if (playerScore > dealerScore) {
     $('#player-info').text('Player Wins with ' + playerScore);
+  } else if (playerScore === dealerScore) {
+    $('#player-info').text('Tie');
   } else $('#player-info').text('Dealer Wins with ' + dealerScore)
 }
 
@@ -138,7 +140,9 @@ function stand() {
 }
 
 function render() {
-
+  if (playerScore < 21) {
+    $('#player-info').text('Player has ' + playerScore + ' Hit or stand?');
+  }
 }
 
 function shuffle(array) {
