@@ -4,7 +4,7 @@ var vals = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
 
 var deck = [];
 
-var playerHand = [];
+var playerHand;
 var dealerHand = [];
 var playerScore = 0;
 var dealerScore = 0;
@@ -16,7 +16,7 @@ var Card = function(suit, val) {
   }
 }
 
-$('#hit').on('click', playerHit);
+$('#hit').on('click', hit.bind(null, 'p'));
 $('#play-game').on('click', init);
 
 function init(){
@@ -34,6 +34,10 @@ function init(){
   shuffle(deck);
 }
 
+function deal(playerHand,dealerHand) {
+  for (i = 0; i < 2; i++) {}
+}
+
 
 function getCardValue(card) {
   if (card.val === "King") {
@@ -49,14 +53,12 @@ function getCardValue(card) {
   }
 }
 
-
-function playerHit(){
+function hit(who) {
   if (deck.length > 0) {
-    console.log(playerHand);
+    var hand = (who === 'p') ? playerHand : dealerHand;
     var card = deck.shift();
-    return playerHand.push(card);
-  } else {
-    console.log("out of cards.");
+    hand.push(card);
+    console.log(hand);
   }
 }
 
@@ -69,7 +71,7 @@ function playerHit(){
   }
 }*/
 
-function playerScoreTotal(){
+function playerScoreTotal() {
   playerScore = 0;
   var aceCount = 0;
   playerHand.forEach(function(card) {
@@ -94,7 +96,7 @@ function playerScoreTotal(){
   return dealerScore;
 }*/
 
-function isAbove(){
+function isAbove() {
   if(dealerScore < 17){
     dealDealer();
   } else return;
