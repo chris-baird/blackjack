@@ -32,12 +32,23 @@ function init(){
     }
   }
   shuffle(deck);
+  deal();
+  checkBlackjack();
+  render();
+}
+
+function checkBlackjack() {
+  if (playerScore === 21) {
+    console.log('Player Blackjack!');
+  } else if (dealerScore === 21) {
+    console.log('Dealer Balckjack!');
+  }
 }
 
 function deal() {
   for (i = 0; i < 2; i++) {
-    hit(playerHand);
-    hit(dealerHand);
+    playerHit();
+    dealerHit();
   }
 }
 
@@ -98,7 +109,7 @@ function scoreTotal(hand) {
 }
 
 function render() {
-
+  console.log('The board has been updated')
 }
 
 function isAbove() {
