@@ -16,7 +16,7 @@ var Card = function(suit, val) {
   }
 }
 
-$('#hit').on('click', hit.bind(null, 'p'));
+$('#hit').on('click', playerHit);
 $('#play-game').on('click', init);
 
 function init(){
@@ -34,8 +34,11 @@ function init(){
   shuffle(deck);
 }
 
-function deal(playerHand,dealerHand) {
-  for (i = 0; i < 2; i++) {}
+function deal() {
+  for (i = 0; i < 2; i++) {
+    hit(playerHand);
+    hit(dealerHand);
+  }
 }
 
 
@@ -53,9 +56,13 @@ function getCardValue(card) {
   }
 }
 
+function playerHit() {
+  hit(playerHand);
+}
+
 function hit(who) {
   if (deck.length > 0) {
-    var hand = (who === 'p') ? playerHand : dealerHand;
+    var hand = (who === playerHand) ? playerHand : dealerHand;
     var card = deck.shift();
     hand.push(card);
     console.log(hand);
