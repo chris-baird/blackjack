@@ -4,7 +4,7 @@ var vals = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
 
 var deck = [];
 
-var playerHand;
+var playerHand = [];
 var dealerHand = [];
 var playerScore = 0;
 var dealerScore = 0;
@@ -62,39 +62,41 @@ function hit(who) {
   }
 }
 
-/*function dealDealer(){
-  if (deck.length > 0) {
-    dealerHand.push(deck.shift());
-    console.log(dealerHand);
-  } else {
-    console.log("out of cards.");
-  }
-}*/
-
-function playerScoreTotal() {
+function scoreTotal(who) {
   playerScore = 0;
+  dealerScore = 0;
+  var hand = (who === playerHand) ? playerHand : dealerHand;
+  var score = (who === playerHand) ? playerScore : dealerScore;
   var aceCount = 0;
-  playerHand.forEach(function(card) {
+  hand.forEach(function(card) {
     aceCount += (card.val === 'Ace') ? 1 : 0;
   });
-  for (var i = 0; i < playerHand.length; i++) {
-    playerScore += getCardValue(playerHand[i]);
+  for (var i = 0; i < hand.length; i++) {
+    score += getCardValue(hand[i]);
   }
-  while (playerScore > 21 && aceCount) {
-    playerScore -= 10;
+  while (score > 21 && aceCount) {
+    score -= 10;
     aceCount--;
   }
-  return playerScore;
+  return score;
 }
 
-/*function dealerScoreTotal(){
+// function playerScoreTotal() {
+//   playerScore = 0;
+//   var aceCount = 0;
+//   playerHand.forEach(function(card) {
+//     aceCount += (card.val === 'Ace') ? 1 : 0;
+//   });
+//   for (var i = 0; i < playerHand.length; i++) {
+//     playerScore += getCardValue(playerHand[i]);
+//   }
+//   while (playerScore > 21 && aceCount) {
+//     playerScore -= 10;
+//     aceCount--;
+//   }
+//   return playerScore;
+// }
 
-  dealerScore = 0;
-  for (var i = 0; i < dealerHand.length; i++) {
-    dealerScore += dealerHand[i].val;
-  }
-  return dealerScore;
-}*/
 
 function isAbove() {
   if(dealerScore < 17){
