@@ -34,6 +34,7 @@ function init(){
   }
   $('#player-info').text('')
   shuffle(deck);
+  enableButtons();
   deal();
   checkBlackjack();
   render();
@@ -43,8 +44,10 @@ function init(){
 function checkBlackjack() {
   if (playerScore === 21) {
     $('#player-info').text('Blackjack! Player Wins.');
+    disableButtons();
   } else if (dealerScore === 21) {
     $('#player-info').text('Blackjack! Dealer Wins.');
+    disableButtons();
   }
 }
 
@@ -85,10 +88,12 @@ function dealerHit() {
 
 function handleBustPlayer() {
   $('#player-info').text('Player has busted, Game over.');
+  disableButtons();
 }
 
 function handleBustDealer() {
   $('#player-info').text('Dealer has busted, You Win.');
+  disableButtons();
 }
 
 // returns updated score for hand
@@ -125,18 +130,34 @@ function isAbove() {
 function checkWinner() {
   if (playerScore > dealerScore) {
     $('#player-info').text('Player Wins with ' + playerScore);
+    disableButtons();
   } else if (playerScore === dealerScore) {
     $('#player-info').text('Tie');
-  } else $('#player-info').text('Dealer Wins with ' + dealerScore)
+    disableButtons();
+  } else {
+    $('#player-info').text('Dealer Wins with ' + dealerScore)
+    disableButtons();
+  }
 }
 
 function stand() {
   isAbove();
+  disableButtons();
   if (dealerScore > 21) {
     handleBustDealer();
   } else {
     checkWinner();
   }
+}
+
+function disableButtons() {
+  $('#hit').off('click');
+  $('#stay').off('click');
+}
+
+function enableButtons() {
+  $('#hit').on('click', playerHit);
+  $('#stay').on('click', stand);
 }
 
 function render() {
