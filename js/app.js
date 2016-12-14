@@ -11,7 +11,7 @@ var dealerScore = 0;
 var Card = function(suit, val) {
   this.suit = suit
   this.val = val
-  this.stateValue = val + suit
+  this.stateValue = suit + val
 }
 
 $('#hit-player').on('click', playerHit);
@@ -43,8 +43,6 @@ function checkBlackjack() {
   if (playerScore === 21) {
     $('#player-info').text('Blackjack! Player Wins.');
     disableButtons();
-  } else if (dealerScore === 21) {
-    $('#player-info').text('Blackjack! Dealer Wins.');
   }
 }
 
