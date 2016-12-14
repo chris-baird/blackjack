@@ -26,18 +26,19 @@ button {
   height: 40px;
   width: 100px;
   border-radius: 15px;
+  font-size: 16px;
 }
 
 #pcard1 {
 }
 
 #dealer-name {
-  margin-left: 220px;
+  text-align: center;
   margin-bottom: 2px;
 }
 
 #player-name {
-  margin-left: 253px;
+  text-align: center;
   margin-bottom: 2px;
 }
 

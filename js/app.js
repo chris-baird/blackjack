@@ -82,7 +82,6 @@ function dealerHit() {
   dealerScore = hit(dealerHand);
   if (dealerScore > 21) handleBustDealer();
   checkBlackjack();
-  console.log(dealerScore);
   render();
 }
 
@@ -96,7 +95,6 @@ function handleBustDealer() {
   disableButtons();
 }
 
-// returns updated score for hand
 function hit(hand) {
   if (deck.length > 0) {
     var card = deck.shift();
