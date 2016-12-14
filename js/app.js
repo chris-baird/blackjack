@@ -39,6 +39,7 @@ function init(){
   render();
 }
 
+
 function checkBlackjack() {
   if (playerScore === 21) {
     $('#player-info').text('Blackjack! Player Wins.');
@@ -53,7 +54,6 @@ function deal() {
     dealerHit();
   }
 }
-
 
 function getCardValue(card) {
   if (card.val === "King") {
