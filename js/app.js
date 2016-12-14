@@ -20,7 +20,7 @@ $('#hit').on('click', playerHit);
 $('#play-game').on('click', init);
 $('#stay').on('click', stand);
 
-function init(){
+function init() {
   playerHand = [];
   dealerHand = [];
   playerScore = 0;
@@ -47,7 +47,6 @@ function checkBlackjack() {
     disableButtons();
   } else if (dealerScore === 21) {
     $('#player-info').text('Blackjack! Dealer Wins.');
-    disableButtons();
   }
 }
 
@@ -83,6 +82,7 @@ function dealerHit() {
   dealerScore = hit(dealerHand);
   if (dealerScore > 21) handleBustDealer();
   checkBlackjack();
+  console.log(dealerScore);
   render();
 }
 
