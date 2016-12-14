@@ -1,6 +1,6 @@
-var suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
+var suits = ['s', 'h', 'c', 'd']
 
-var vals = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
+var vals = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
 
 var deck = [];
 
@@ -11,12 +11,10 @@ var dealerScore = 0;
 var Card = function(suit, val) {
   this.suit = suit
   this.val = val
-  this.stateValue = function(){
-    return 'The ' + this.val + ' of ' + this.suit + '.'
-  }
+  this.stateValue = val + suit
 }
 
-$('#hit').on('click', playerHit);
+$('#hit-player').on('click', playerHit);
 $('#play-game').on('click', init);
 $('#stay').on('click', stand);
 
@@ -58,29 +56,41 @@ function deal() {
 }
 
 function getCardValue(card) {
-  if (card.val === "King") {
+  if (card.val === "K") {
     return 10;
-  } else if (card.val === "Queen") {
+  } else if (card.val === "Q") {
     return 10;
-  } else if (card.val === "Jack") {
+  } else if (card.val === "J") {
     return 10;
-  } else if (card.val === "Ace") {
+  } else if (card.val === "A") {
     return 11;
   } else {
     return card.val;
   }
 }
 
+function hit(hand) {
+  if (deck.length > 0) {
+    var card = deck.shift();
+    hand.push(card);
+    return scoreTotal(hand);
+  }
+}
+
 function playerHit() {
   playerScore = hit(playerHand);
-  if (playerScore > 21) handleBustPlayer();
+  if (playerScore > 21) {
+    handleBustPlayer();
+  }
   checkBlackjack();
   render();
 }
 
 function dealerHit() {
   dealerScore = hit(dealerHand);
-  if (dealerScore > 21) handleBustDealer();
+  if (dealerScore > 21) {
+    handleBustDealer();
+  }
   checkBlackjack();
   render();
 }
@@ -95,19 +105,11 @@ function handleBustDealer() {
   disableButtons();
 }
 
-function hit(hand) {
-  if (deck.length > 0) {
-    var card = deck.shift();
-    hand.push(card);
-    return scoreTotal(hand);
-  }
-}
-
 function scoreTotal(hand) {
   var score = 0;
   var aceCount = 0;
   hand.forEach(function(card) {
-    aceCount += (card.val === 'Ace') ? 1 : 0;
+    aceCount += (card.val === 'A') ? 1 : 0;
   });
   for (var i = 0; i < hand.length; i++) {
     score += getCardValue(hand[i]);
