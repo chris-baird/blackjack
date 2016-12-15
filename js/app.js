@@ -32,16 +32,9 @@ $('#stay').on('click', stand);
 function init() {
   removeAllClassesP();
   removeAllClassesD();
-  firstTurn = true;
-  playerHand = [];
-  dealerHand = [];
-  playerScore = 0;
-  dealerScore = 0;
-  $('#player-info').text('')
-  $('.game-op').removeClass('remove-btns');
+  clearValues();
   makeDeck();
   shuffle(deck);
-  // enableButtons();
   deal();
   isFirstTurn();
   checkBlackjack();
@@ -61,7 +54,6 @@ function checkBlackjack() {
   if (playerScore === 21) {
     $('#player-info').text('Blackjack! Player Wins.');
     hideButtons()
-    // disableButtons();
   }
 }
 
@@ -115,13 +107,11 @@ function dealerHit() {
 function handleBustPlayer() {
   $('#player-info').text('Player has busted with ' + playerScore + ' Game over.');
   hideButtons()
-  // disableButtons();
 }
 /***Refactor Me!**/
 function handleBustDealer() {
   $('#player-info').text('Dealer has busted, You Win.');
   hideButtons()
-  // disableButtons();
 }
 
 function scoreTotal(hand) {
@@ -160,23 +150,13 @@ function checkWinner() {
 function stand() {
   isAbove();
   isFirstTurn();
-  // disableButtons();
   if (dealerScore > 21) {
     handleBustDealer();
   } else {
     checkWinner();
   }
 }
-/***Refactor Me!**/
-// function disableButtons() {
-//   $('#hit').off('click');
-//   $('#stay').off('click');
-// }
-// **Refactor Me!*
-// function enableButtons() {
-//   $('#hit').on('click', playerHit);
-//   $('#stay').on('click', stand);
-// }
+
 /***Refactor Me!**/
 function renderPlayer() {
   for (var i = 0; i < playerHand.length; i++) {
@@ -233,12 +213,26 @@ function isFirstTurn() {
   } else $('#dcard2').removeClass('back');
 }
 
-/***Initialize game***/
-init();
-
 function hideButtons() {
   $('.game-op').addClass('remove-btns');
 }
+
+function clearValues() {
+  firstTurn = true;
+  playerHand = [];
+  dealerHand = [];
+  playerScore = 0;
+  dealerScore = 0;
+  $('#player-info').text('')
+  $('.game-op').removeClass('remove-btns');
+}
+
+/***Initialize game***/
+init();
+
+
+
+
 
 
 
