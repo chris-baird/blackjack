@@ -19,6 +19,7 @@
         <div id="dcard3" class="card"></div>
         <div id="dcard4" class="card"></div>
         <div id="dcard5" class="card"></div>
+        <div id="dcard6" class="card"></div>
       </div>
     </div>
     <div id="middle-display">
@@ -31,17 +32,23 @@
         <div id="pcard3" class="card"></div>
         <div id="pcard4" class="card"></div>
         <div id="pcard5" class="card"></div>
+        <div id="pcard6" class="card"></div>
       </div>
     </div>
     <div id="bottom-display">
       <h3 id="player-info"></h3>
       <div id="player-btn-div">
-        <button id="hit-player" class="game-op">Hit</button>
-        <button id="stay" class="game-op">Stay</button>
+        <button id="hit-player" class="game-op remove-btns">Hit</button>
+        <button id="stay" class="game-op remove-btns">Stay</button>
         <button id="play-game">Play Game</button>
-        <!--<button id="bet-10">10</button>
-        <button id="bet-30">30</button>
-        <button id="bet-50">50</button>-->
+        <div id="bet-row">
+          <form action="">
+            <p>Player Funds: 100</p>
+            <input type="radio" name="bet" value="10" checked="checked">Bet 10
+            <input type="radio" name="bet" value="20">Bet 20
+            <input type="radio" name="bet" value="30">Bet 30
+          </form>
+        </div>
       </div>
     </div>
   </div>

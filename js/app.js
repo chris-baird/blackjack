@@ -24,12 +24,13 @@ var Card = function(suit, val) {
 /***Event Listeners***/
 $('#hit-player').on('click', playerHit);
 
-$('#play-game').on('click', init);
+$('#play-game').on('click', playGame);
 
 $('#stay').on('click', stand);
 
 /***Functions***/
 function init() {
+  $('#play-game').addClass('remove-btns');
   removeAllClassesP();
   removeAllClassesD();
   clearValues();
@@ -39,6 +40,10 @@ function init() {
   isFirstTurn();
   checkBlackjack();
   render();
+}
+
+function playGame() {
+  init();
 }
 
 function makeDeck() {
@@ -53,7 +58,8 @@ function makeDeck() {
 function checkBlackjack() {
   if (playerScore === 21) {
     $('#player-info').text('Blackjack! Player Wins.');
-    hideButtons()
+    $('#play-game').removeClass('remove-btns');
+    hideButtons();
   }
 }
 
@@ -106,11 +112,13 @@ function dealerHit() {
 /***Refactor Me!**/
 function handleBustPlayer() {
   $('#player-info').text('Player has busted with ' + playerScore + ' Game over.');
+  $('#play-game').removeClass('remove-btns');
   hideButtons()
 }
 /***Refactor Me!**/
 function handleBustDealer() {
   $('#player-info').text('Dealer has busted, You Win.');
+  $('#play-game').removeClass('remove-btns');
   hideButtons()
 }
 
@@ -139,10 +147,13 @@ function isAbove() {
 function checkWinner() {
   if (playerScore > dealerScore) {
     $('#player-info').text('Player Wins with ' + playerScore);
+    $('#play-game').removeClass('remove-btns');
   } else if (playerScore === dealerScore) {
     $('#player-info').text('Tie');
+    $('#play-game').removeClass('remove-btns');
   } else {
     $('#player-info').text('Dealer Wins with ' + dealerScore)
+    $('#play-game').removeClass('remove-btns');
   }
   hideButtons()
 }
@@ -174,14 +185,14 @@ function renderDealer() {
 
 function render() {
   if (playerScore < 21) {
-    $('#player-info').text('Player has ' + playerScore + ' Hit or Stand?');
+    $('#player-info').text('Player has ' + playerScore + ' Hit or Stay?');
   }
   renderPlayer();
   renderDealer();
 }
 /***Refactor Me!**/
 function removeAllClassesP() {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 6; i++) {
     var str = "#pcard" + (i + 1);
     $(str).removeClass();
     $(str).addClass('card');
@@ -189,7 +200,7 @@ function removeAllClassesP() {
 }
 /***Refactor Me!**/
 function removeAllClassesD() {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 6; i++) {
     var str = "#dcard" + (i + 1);
     $(str).removeClass();
     $(str).addClass('card');
@@ -228,7 +239,7 @@ function clearValues() {
 }
 
 /***Initialize game***/
-init();
+
 
 
 

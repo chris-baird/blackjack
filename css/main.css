@@ -29,8 +29,30 @@ button {
   font-size: 16px;
 }
 
+form {
+  margin-top: 5px;
+}
+
+p {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
 .remove-btns {
   display: none;
+}
+
+#play-game.remove-btns {
+  display: none;
+}
+
+#bet-row {
+  text-align: center;
+}
+
+#player-info {
+  margin: 10px;
 }
 
 #bet-10 {
@@ -40,6 +62,7 @@ button {
 #dealer-name {
   text-align: center;
   margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 #player-name {
