@@ -1,3 +1,4 @@
+/***Variables***/
 var suits = ['s', 'h', 'c', 'd']
 
 var vals = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
@@ -5,32 +6,36 @@ var vals = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
 var deck = [];
 
 var playerHand = [];
+
 var dealerHand = [];
+
 var playerScore = 0;
+
 var dealerScore = 0;
+
 var Card = function(suit, val) {
   this.suit = suit
   this.val = val
   this.stateValue = suit + val
 }
 
+/***Event Listeners***/
 $('#hit-player').on('click', playerHit);
+
 $('#play-game').on('click', init);
+
 $('#stay').on('click', stand);
 
+/***Functions***/
 function init() {
+  removeAllClassesP();
+  removeAllClassesD();
   playerHand = [];
   dealerHand = [];
   playerScore = 0;
   dealerScore = 0;
-
-  for(var i = 0; i < vals.length; i++){
-    for(var j = 0; j < suits.length; j++){
-      var card = new Card(suits[j], vals[i]);
-      deck.push(card);
-    }
-  }
   $('#player-info').text('')
+  makeDeck();
   shuffle(deck);
   enableButtons();
   deal();
@@ -38,6 +43,14 @@ function init() {
   render();
 }
 
+function makeDeck() {
+  for(var i = 0; i < vals.length; i++){
+    for(var j = 0; j < suits.length; j++){
+      var card = new Card(suits[j], vals[i]);
+      deck.push(card);
+    }
+  }
+}
 
 function checkBlackjack() {
   if (playerScore === 21) {
@@ -158,9 +171,41 @@ function enableButtons() {
   $('#stay').on('click', stand);
 }
 
+function renderPlayer() {
+  for (var i = 0; i < playerHand.length; i++) {
+    var str = "#pcard" + (i + 1);
+    $(str).addClass(playerHand[i].stateValue);
+  }
+}
+
+function renderDealer() {
+  for (var i = 0; i < dealerHand.length; i++) {
+    var str = "#dcard" + (i + 1);
+    $(str).addClass(dealerHand[i].stateValue);
+  }
+}
+
 function render() {
   if (playerScore < 21) {
-    $('#player-info').text('Player has ' + playerScore + ' Hit or stand?');
+    $('#player-info').text('Player has ' + playerScore + ' Hit or Stand?');
+  }
+  renderPlayer();
+  renderDealer();
+}
+
+function removeAllClassesP() {
+  for (var i = 0; i < 4; i++) {
+    var str = "#pcard" + (i + 1);
+    $(str).removeClass();
+    $(str).addClass('card');
+  }
+}
+
+function removeAllClassesD() {
+  for (var i = 0; i < 4; i++) {
+    var str = "#dcard" + (i + 1);
+    $(str).removeClass();
+    $(str).addClass('card');
   }
 }
 
@@ -174,10 +219,8 @@ function shuffle(array) {
   }
 }
 
+/***Initialize game***/
 init();
-
-
-
 
 
 
