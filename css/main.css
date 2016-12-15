@@ -43,16 +43,23 @@ p {
   display: none;
 }
 
+.game-op {
+  margin-bottom: 2px;
+}
+
 #play-game.remove-btns {
   display: none;
 }
 
 #bet-row {
   text-align: center;
+  border: 1px dashed black;
+  width: 400px;
+  margin: 0 auto;
 }
 
 #player-info {
-  margin: 10px;
+  margin: 5px;
 }
 
 #bet-10 {
@@ -90,6 +97,7 @@ p {
 #play-game {
   text-align: center;
   display: inline-block;
+  margin-bottom: 2px;
 }
 
 #hand {

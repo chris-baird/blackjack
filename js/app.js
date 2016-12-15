@@ -149,7 +149,7 @@ function checkWinner() {
     $('#player-info').text('Player Wins with ' + playerScore);
     $('#play-game').removeClass('remove-btns');
   } else if (playerScore === dealerScore) {
-    $('#player-info').text('Tie');
+    $('#player-info').text('Push');
     $('#play-game').removeClass('remove-btns');
   } else {
     $('#player-info').text('Dealer Wins with ' + dealerScore)
