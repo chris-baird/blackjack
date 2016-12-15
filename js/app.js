@@ -21,7 +21,7 @@ var Card = function(suit, val) {
   this.stateValue = suit + val
 }
 
-/***Event Listeners***/
+/***Event Listener***/
 $('#hit-player').on('click', playerHit);
 
 $('#play-game').on('click', playGame);
