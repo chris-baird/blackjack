@@ -5,6 +5,8 @@ var vals = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
 
 var deck = [];
 
+var firstTurn = true;
+
 var playerHand = [];
 
 var dealerHand = [];
@@ -30,6 +32,7 @@ $('#stay').on('click', stand);
 function init() {
   removeAllClassesP();
   removeAllClassesD();
+  firstTurn = true;
   playerHand = [];
   dealerHand = [];
   playerScore = 0;
@@ -39,6 +42,7 @@ function init() {
   shuffle(deck);
   enableButtons();
   deal();
+  isFirstTurn();
   checkBlackjack();
   render();
 }
@@ -153,6 +157,7 @@ function checkWinner() {
 
 function stand() {
   isAbove();
+  isFirstTurn();
   disableButtons();
   if (dealerScore > 21) {
     handleBustDealer();
@@ -162,12 +167,12 @@ function stand() {
 }
 
 function disableButtons() {
-  $('#hit').off('click');
+  $('#hit-player').off('click');
   $('#stay').off('click');
 }
 
 function enableButtons() {
-  $('#hit').on('click', playerHit);
+  $('#hit-player').on('click', playerHit);
   $('#stay').on('click', stand);
 }
 
@@ -194,7 +199,7 @@ function render() {
 }
 
 function removeAllClassesP() {
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 5; i++) {
     var str = "#pcard" + (i + 1);
     $(str).removeClass();
     $(str).addClass('card');
@@ -202,7 +207,7 @@ function removeAllClassesP() {
 }
 
 function removeAllClassesD() {
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 5; i++) {
     var str = "#dcard" + (i + 1);
     $(str).removeClass();
     $(str).addClass('card');
@@ -219,8 +224,19 @@ function shuffle(array) {
   }
 }
 
+function isFirstTurn() {
+  if (firstTurn === true) {
+    $('#dcard2').addClass('back');
+    firstTurn = false;
+  } else $('#dcard2').removeClass('back');
+}
+
 /***Initialize game***/
 init();
+
+
+
+
 
 
 
