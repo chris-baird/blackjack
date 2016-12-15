@@ -29,6 +29,10 @@ button {
   font-size: 16px;
 }
 
+.remove-btns {
+  display: none;
+}
+
 #bet-10 {
   border-radius: 100px;
 }
