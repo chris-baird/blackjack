@@ -213,18 +213,10 @@ function stand() {
   }
 }
 
-/***Refactor Me!**/
-function renderPlayer() {
-  for (var i = 0; i < playerHand.length; i++) {
-    var str = "#pcard" + (i + 1);
-    $(str).addClass(playerHand[i].stateValue);
-  }
-}
-/***Refactor Me!**/
-function renderDealer() {
-  for (var i = 0; i < dealerHand.length; i++) {
-    var str = '#dcard' + (i + 1);
-    $(str).addClass(dealerHand[i].stateValue);
+function renderPlayer(renderWho, hand) {
+  for (var i = 0; i < hand.length; i++) {
+    var str = renderWho + (i + 1);
+    $(str).addClass(hand[i].stateValue);
   }
 }
 
@@ -232,10 +224,10 @@ function render() {
   if (playerScore < 21) {
     $('#player-info').text('Player has ' + playerScore + ' Hit or Stay?');
   }
-  renderPlayer();
-  renderDealer();
+  renderPlayer('#pcard', playerHand);
+  renderPlayer('#dcard', dealerHand);
 }
-/***Refactor Me!**/
+
 function removeAllClasses(role) {
   for (var i = 0; i < 6; i++) {
     var str = role + (i + 1);
