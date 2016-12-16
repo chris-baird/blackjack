@@ -84,15 +84,8 @@ function checkBlackjack() {
 }
 
 /***Refactor Me!**/
-function handleBustPlayer() {
-  $('#player-info').text('Player has busted with ' + playerScore + ' Game over.');
-  $('#play-game').removeClass('remove-btns');
-  hideButtons();
-  handleBet(betAmount, false);
-}
-/***Refactor Me!**/
-function handleBustDealer() {
-  $('#player-info').text('Dealer has busted, You Win.');
+function handleBust(who) {
+  $('#player-info').text(who + ' has busted Game Over');
   $('#play-game').removeClass('remove-btns');
   hideButtons();
 }
@@ -160,7 +153,8 @@ function hit(hand) {
 function playerHit() {
   playerScore = hit(playerHand);
   if (playerScore > 21) {
-    handleBustPlayer();
+    handleBust('Player');
+    handleBet(betAmount, false);
   }
 
   if (playerScore === 21) {
@@ -175,7 +169,7 @@ function playerHit() {
 function dealerHit() {
   dealerScore = hit(dealerHand);
   if (dealerScore > 21) {
-    handleBustDealer();
+    handleBust('Dealer');
   }
   render();
 }
@@ -206,7 +200,7 @@ function stand() {
   isAbove();
   isFirstTurn();
   if (dealerScore > 21) {
-    handleBustDealer();
+    handleBust('Dealer');
     handleBet(betAmount, true);
   } else {
     checkWinner();
