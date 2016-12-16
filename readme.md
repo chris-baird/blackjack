@@ -18,6 +18,8 @@
 3. Click Deal to start game.
 4. Choose to either hit or stand after your cards have been delt.
 
+### Known bugs
+* Getting 21 on your first deal breaks the betting for and "unknown" reason.
 
 ### Future updates
 * Dynamic card animations.
