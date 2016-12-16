@@ -83,7 +83,6 @@ function checkBlackjack() {
   }
 }
 
-/***Refactor Me!**/
 function handleBust(who) {
   $('#player-info').text(who + ' has busted Game Over');
   $('#play-game').removeClass('remove-btns');
