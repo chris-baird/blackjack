@@ -27,9 +27,9 @@ var Card = function(suit, val) {
   this.stateValue = suit + val
 }
 
-$('#player-funds').text("funds " + playerBank);
-
 /***Event Listener***/
+$('#player-funds').text('funds ' + playerBank);
+
 $('#hit-player').on('click', playerHit);
 
 $('#play-game').on('click', playGame);
@@ -39,8 +39,8 @@ $('#stay').on('click', stand);
 /***Functions***/
 function init() {
   $('#play-game').addClass('remove-btns');
-  removeAllClassesP();
-  removeAllClassesD();
+  removeAllClasses('#pcard');
+  removeAllClasses('#dcard');
   clearValues();
   makeDeck();
   shuffle(deck);
@@ -53,7 +53,7 @@ function init() {
 function playGame() {
   init();
   takeBet();
-  $('#player-funds').text("funds " + playerBank);
+  $('#player-funds').text('funds ' + playerBank);
 }
 
 function takeBet() {
@@ -87,14 +87,14 @@ function checkBlackjack() {
 function handleBustPlayer() {
   $('#player-info').text('Player has busted with ' + playerScore + ' Game over.');
   $('#play-game').removeClass('remove-btns');
-  hideButtons()
+  hideButtons();
   handleBet(betAmount, false);
 }
 /***Refactor Me!**/
 function handleBustDealer() {
   $('#player-info').text('Dealer has busted, You Win.');
   $('#play-game').removeClass('remove-btns');
-  hideButtons()
+  hideButtons();
 }
 
 function handleBet(amt, win) {
@@ -125,7 +125,7 @@ function checkWinner() {
     $('#play-game').removeClass('remove-btns');
     handleBet(betAmount, false);
   }
-  hideButtons()
+  hideButtons();
 }
 
 function deal() {
@@ -223,7 +223,7 @@ function renderPlayer() {
 /***Refactor Me!**/
 function renderDealer() {
   for (var i = 0; i < dealerHand.length; i++) {
-    var str = "#dcard" + (i + 1);
+    var str = '#dcard' + (i + 1);
     $(str).addClass(dealerHand[i].stateValue);
   }
 }
@@ -236,17 +236,9 @@ function render() {
   renderDealer();
 }
 /***Refactor Me!**/
-function removeAllClassesP() {
+function removeAllClasses(role) {
   for (var i = 0; i < 6; i++) {
-    var str = "#pcard" + (i + 1);
-    $(str).removeClass();
-    $(str).addClass('card');
-  }
-}
-/***Refactor Me!**/
-function removeAllClassesD() {
-  for (var i = 0; i < 6; i++) {
-    var str = "#dcard" + (i + 1);
+    var str = role + (i + 1);
     $(str).removeClass();
     $(str).addClass('card');
   }

@@ -1,4 +1,6 @@
-button:focus {outline:0;}
+button:focus {
+  outline: 0;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -105,6 +107,3 @@ p {
   text-align: center;
   height: 200px;
 }
-
-
-
