@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Blackjack</title>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" href="css/card-deck-css/css/cardstarter.css">
-</head>
-<body>
-  <div id="main-wrapper">
-    <h1><strong>Blackjack</strong></h1>
-    <h2 id="dealer-name">Dealer's cards:</h2>
-    <div id="dealer-display">
-      <div id="hand">
-        <div id="dcard1" class="card"></div>
-        <div id="dcard2" class="card"></div>
-        <div id="dcard3" class="card"></div>
-        <div id="dcard4" class="card"></div>
-        <div id="dcard5" class="card"></div>
-        <div id="dcard6" class="card"></div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Blackjack</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/card-deck-css/css/cardstarter.css">
+  </head>
+  <body>
+    <div id="main-wrapper">
+      <h1><strong>Blackjack</strong></h1>
+      <h2 id="dealer-name">Dealer's cards:</h2>
+      <div id="dealer-display">
+        <div id="hand">
+          <div id="dcard1" class="card"></div>
+          <div id="dcard2" class="card"></div>
+          <div id="dcard3" class="card"></div>
+          <div id="dcard4" class="card"></div>
+          <div id="dcard5" class="card"></div>
+          <div id="dcard6" class="card"></div>
+        </div>
       </div>
-    </div>
-    <div id="middle-display">
-    </div>
-    <h2 id="player-name">Your Cards:</h2>
-    <div id="player-display">
-      <div id="hand">
-        <div id="pcard1" class="card"></div>
-        <div id="pcard2" class="card"></div>
-        <div id="pcard3" class="card"></div>
-        <div id="pcard4" class="card"></div>
-        <div id="pcard5" class="card"></div>
-        <div id="pcard6" class="card"></div>
+      <div id="middle-display">
       </div>
-    </div>
-    <div id="bottom-display">
-      <h3 id="player-info"></h3>
-      <div id="player-btn-div">
-        <button id="hit-player" class="game-op remove-btns">Hit</button>
-        <button id="stay" class="game-op remove-btns">Stay</button>
-        <button id="play-game">Deal</button>
-        <div id="bet-row">
-          <form action="">
-            <p id="player-funds"></p>
-            <input class="bet-btn" type="radio" name="bet" value="10" checked="checked">Bet 10
-            <input class="bet-btn" type="radio" name="bet" value="20">Bet 20
-            <input class="bet-btn" type="radio" name="bet" value="30">Bet 30
-          </form>
+      <h2 id="player-name">Your Cards:</h2>
+      <div id="player-display">
+        <div id="hand">
+          <div id="pcard1" class="card"></div>
+          <div id="pcard2" class="card"></div>
+          <div id="pcard3" class="card"></div>
+          <div id="pcard4" class="card"></div>
+          <div id="pcard5" class="card"></div>
+          <div id="pcard6" class="card"></div>
+        </div>
+      </div>
+      <div id="bottom-display">
+        <h3 id="player-info"></h3>
+        <div id="player-btn-div">
+          <button id="hit-player" class="game-op remove-btns">Hit</button>
+          <button id="stay" class="game-op remove-btns">Stay</button>
+          <button id="play-game">Deal</button>
+          <div id="bet-row">
+            <form action="">
+              <p id="player-funds"></p>
+              <input class="bet-btn" type="radio" name="bet" value="10" checked="checked">Bet 10
+              <input class="bet-btn" type="radio" name="bet" value="20">Bet 20
+              <input class="bet-btn" type="radio" name="bet" value="30">Bet 30
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="js/app.js"></script>
-</body>
+    <script src="js/app.js"></script>
+  </body>
 </html>
