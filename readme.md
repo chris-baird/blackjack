@@ -22,3 +22,4 @@
 ### Future updates
 * Dynamic card animations.
 * Split and Double Down.
+* Game sounds.
