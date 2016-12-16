@@ -27,6 +27,8 @@ var Card = function(suit, val) {
   this.stateValue = suit + val
 }
 
+$('#player-funds').text("funds " + playerBank);
+
 /***Event Listener***/
 $('#hit-player').on('click', playerHit);
 
@@ -51,7 +53,7 @@ function init() {
 function playGame() {
   init();
   takeBet();
-  $('#player-funds').text(playerBank);
+  $('#player-funds').text("funds " + playerBank);
 }
 
 function takeBet() {
@@ -74,12 +76,10 @@ function makeDeck() {
 
 function checkBlackjack() {
   if (playerScore === 21) {
-    console.log("aletered");
-    handleBet(betAmount, true);
     $('#player-info').text('Blackjack! Player Wins.');
     $('#play-game').removeClass('remove-btns');
     hideButtons();
-    console.log("got to end");
+    handleBet(betAmount, true);
   }
 }
 
@@ -103,7 +103,7 @@ function handleBet(amt, win) {
   if (win) {
     return playerBank = playerBank + amount;
   } else {
-    return playerBank = playerBank - (amount / 2);
+    return playerBank = playerBank - amt;
   }
 }
 
@@ -162,7 +162,13 @@ function playerHit() {
   if (playerScore > 21) {
     handleBustPlayer();
   }
-  checkBlackjack();
+
+  if (playerScore === 21) {
+    handleBet(betAmount, true);
+    $('#player-info').text('Blackjack! Player Wins.');
+    $('#play-game').removeClass('remove-btns');
+    hideButtons();
+  }
   render();
 }
 
@@ -171,7 +177,6 @@ function dealerHit() {
   if (dealerScore > 21) {
     handleBustDealer();
   }
-  checkBlackjack();
   render();
 }
 
@@ -202,7 +207,6 @@ function stand() {
   isFirstTurn();
   if (dealerScore > 21) {
     handleBustDealer();
-    console.log("inside stand");
     handleBet(betAmount, true);
   } else {
     checkWinner();
@@ -278,18 +282,3 @@ function clearValues() {
   $('#player-info').text('')
   $('.game-op').removeClass('remove-btns');
 }
-
-/***Initialize game***/
-
-
-
-
-
-
-
-
-
-
-
-
-

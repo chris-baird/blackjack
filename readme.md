@@ -19,7 +19,7 @@
 4. Choose to either hit or stand after your cards have been delt.
 
 ### Known bugs
-* Getting 21 on your first deal breaks the betting for and "unknown" reason.
+* N/A
 
 ### Future updates
 * Dynamic card animations.
